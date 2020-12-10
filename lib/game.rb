@@ -1,8 +1,8 @@
 class Game
   attr_reader :player1, :player2, :win_comb
 
-  @@chosen_numbers = []
   def initialize(player1, player2)
+    @chosen_numbers = []
     @win_comb = [[1, 4, 7], [1, 2, 3], [1, 5, 9], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
     @player1 = player1
     @player2 = player2
@@ -14,12 +14,11 @@ class Game
   end
 
   def chosen(num)
-    if !@@chosen_numbers.include?(num) && num != '' && (1..9).include?(num)
-      @@chosen_numbers << num
-      true
-    else
-      false
-    end
+    !@chosen_numbers.include?(num) && num != '' && (1..9).include?(num) ? true : false
+  end
+
+  def get_chosen_number(num)
+    @chosen_numbers << num
   end
 
   def game_result(player)
