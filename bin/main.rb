@@ -17,7 +17,7 @@ puts ''
 puts 'Please input name for player 2'
 name2 = gets.chomp
 player2 = Player.new(name2, 'O')
-while player2.valid_name(name1) == false || name1 == name2
+while player2.valid_name(name2) == false || name1 == name2
   puts 'Invalid Name!!!'
   name2 = gets.strip
 end
