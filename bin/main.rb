@@ -28,25 +28,26 @@ puts "#{name1} starts!"
 my_game = Game.new(player1, player2)
 my_board = Board.new
 
-i = 0
-while i < 9
-  player = i.even? ? player1 : player2
-  puts "#{player.name}! Pick a number between 1 and 9 inclusive "
-  num = gets.chomp.to_i
-  while my_game.chosen(num) == false
-    puts "#{player.name} choose a number different from #{num}"
-    num = gets.chomp.to_i
-  end
-  p my_game.get_chosen_number(num)
-  my_avatar = my_game.avatar(player)
-  my_board.update_board(my_avatar, num - 1)
-  puts my_board.display_board
-  player.update_my_num(num)
-  if my_game.game_result(player)
-    puts "#{player.name} is the winner "
-    break
-  end
+def play(player1, player2, my_game, my_board)
+  i = 0
+  while i < 9
+    player = i.even? ? player1 : player2
+    puts "#{player.name}! Pick a number between 1 and 9 inclusive "
+    while my_game.chosen(num = gets.chomp.to_i) == false
+      puts "#{player.name} choose a number different from #{num}"
+    end
+    my_game.get_chosen_number(num)
+    my_avatar = my_game.avatar(player)
+    my_board.update_board(my_avatar, num - 1)
+    puts my_board.display_board
+    player.update_my_num(num)
+    if my_game.game_result(player)
+      puts "#{player.name} is the winner "
+      break
+    end
 
-  i += 1
-  p 'It is a DRAW' if i == 9
+    i += 1
+    p 'It is a DRAW' if i == 9
+  end
 end
+play(player1, player2, my_game, my_board)
