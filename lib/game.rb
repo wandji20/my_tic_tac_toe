@@ -18,7 +18,7 @@ class Game
   end
 
   def game_exit(input)
-    input == 'end' 
+    input == 'end'
   end
 
   def get_chosen_number(num)
