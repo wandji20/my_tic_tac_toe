@@ -17,6 +17,10 @@ class Game
     !@chosen_numbers.include?(num) && num != '' && (1..9).include?(num) ? true : false
   end
 
+  def game_exit(input)
+    input == 'end' 
+  end
+
   def get_chosen_number(num)
     @chosen_numbers << num
   end
